@@ -1,0 +1,25 @@
+{
+    "name": "todorowww/banking-srb",
+    "type": "library",
+    "version": "1.0.0",
+    "description": "D-Bus Notification Library for Derick Rethans D-Bus PHP extension",
+    "keywords": ["serbia","banking","account","nbs","reference","poziv na broj"],
+    "homepage": "https://github.com/todorowww/banking-srb",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Slobodan Todorov",
+            "email": "slobodan@todorowww.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "ext-bcmath" : "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "todorowww\\": "src/"
+        }
+    }
+}

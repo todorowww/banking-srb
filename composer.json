@@ -2,7 +2,7 @@
     "name": "todorowww/banking-srb",
     "type": "library",
     "version": "1.0.0",
-    "description": "D-Bus Notification Library for Derick Rethans D-Bus PHP extension",
+    "description": "Helper library for use with Serbian financial system. Account number validation, reference number generation, etc.",
     "keywords": ["serbia","banking","account","nbs","reference","poziv na broj"],
     "homepage": "https://github.com/todorowww/banking-srb",
     "license": "MIT",

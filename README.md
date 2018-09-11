@@ -9,7 +9,7 @@ By the order of the Governor of National Bank of Serbia, account numbers are str
 - 2 digits represent checksum number, calculated using ISO 7064 MOD 97-10
 
 When payment reference numbers are generated, checksum goes to the front of the number, It is calculated using the same ISO 7064 MOD 97-10 algorithm as bank account number checksum.
-Reference number must consists only of digits, and if it must include a letter, it is transformed into a number, to generate checksum.
+Reference number must consist only of digits, and if it should include a letter, that letter is transformed into a number, to generate checksum.
 Conversion follows this pattern: A=10, B=11, C=12, ..., Y = 34, Z = 35.
 
 ## Installation ##

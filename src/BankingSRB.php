@@ -6,15 +6,6 @@ class BankingSRB
 {
 
     /**
-     * Places checksum at the back of reference number
-     */
-    const CHECKSUM_BACK = 1;
-    /**
-     * Places checksum at the front of reference number
-     */
-    const CHECKSUM_FRONT = 2;
-
-    /**
      * Calculates checksum, using ISO 7064 MOD 97-10 algorithm
      *
      * @param string $number Number for which we want to calculate checksum
@@ -29,13 +20,34 @@ class BankingSRB
      * Sanitizes input, removing all non-numeric values. Characters A-Z are converted to numbers
      * following this pattern: A=10, B=11, C=13, ..., Y=34, Z=35
      *
-     * @todo Add conversion of A-Z characters
      * @param string $input Input we want to sanitize
      * @return string
      */
     public static function sanitize($input)
     {
-        return preg_replace("/[^0-9,.]/", null, $input);
+        $sanitized = self::alphaToNum($input);
+        return preg_replace("/[^0-9]/", null, $sanitized);
+    }
+
+    /**
+     * Converts all A-Z characters to their numeric counterparts
+     *
+     * @param string $input
+     * @return string
+     */
+    public static function alphaToNum($input)
+    {
+        $output = null;
+        $sanitized = preg_replace("/[^0-9A-Z]/", null, strtoupper($input));
+        foreach(str_split($sanitized) as $char) {
+            $charOrd = ord($char);
+            if (($charOrd >= 65) && ($charOrd <= 90)) {
+                $output .= ($charOrd - 55);
+            } else {
+                $output .= $char;
+            }
+        }
+        return $output;
     }
 
     /**
@@ -56,29 +68,30 @@ class BankingSRB
      * Generates valid reference number, with appropriate checksum
      *
      * @param string $number Desired reference number
-     * @param int $checksumPosition Where to place checksum number CHECKSUM_BACK or CHECKSUM_FRONT
      * @return string
      */
-    public static function createReferenceNumber($number, $checksumPosition = BankingSRB::CHECKSUM_BACK)
+    public static function createReferenceNumber($number)
     {
         $checksum = self::calculateChecksum($number);
-        return ($checksumPosition === BankingSRB::CHECKSUM_BACK) ?
-            "$number-$checksum" :
-            "$checksum-$number";
+        return "$checksum-$number";
     }
 
     /**
      * Formats account number in a human readable way (3-13-2 digits)
      *
      * @param string $number Account number to format
+     * @param bool $zeroPad Should we pad account number with 0
      * @return string
      */
-    public static function formatAccountNumber($number)
+    public static function formatAccountNumber($number, $zeroPad = false)
     {
-        $number = self::sanitize($number);
-        $bankId = substr($number, 0, 3);
-        $checksum = substr($number, -2, 2);
-        $account = substr($number, 3, -2);
+        $sanitized = self::sanitize($number);
+        $bankId = substr($sanitized, 0, 3);
+        $checksum = substr($sanitized, -2, 2);
+        $account = substr($sanitized, 3, -2);
+        if ($zeroPad) {
+            $account = str_repeat("0", 13 - strlen($account)) . $account;
+        }
         return "$bankId-$account-$checksum";
     }
 }

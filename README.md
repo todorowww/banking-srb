@@ -1,4 +1,4 @@
-Banking SRB
+Banking SRB ![TravisCI build](https://api.travis-ci.org/todorowww/banking-srb.svg?branch=master)
 =================================
 
 This library contains useful banking functions in use by banks in Serbia.

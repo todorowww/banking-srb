@@ -1,6 +1,7 @@
 Banking SRB
-![TravisCI build](https://api.travis-ci.org/todorowww/banking-srb.svg?branch=master)
+![TravisCI build](https://img.shields.io/travis-ci/todorowww/banking-srb/master.svg?style=flat-square)
 ![License](https://img.shields.io/github/license/todorowww/banking-srb.svg?style=flat-square)
+![PHP](https://img.shields.io/travis/php-v/todorowww/banking-srb.svg?style=flat-square)
 ![Packagist Version](https://img.shields.io/packagist/v/todorowww/banking-srb.svg?style=flat-square)
 ![GitHub release](https://img.shields.io/github/release/todorowww/banking-srb.svg?style=flat-square)
 =================================

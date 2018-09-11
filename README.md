@@ -1,8 +1,8 @@
 Banking SRB
 ![TravisCI build](https://api.travis-ci.org/todorowww/banking-srb.svg?branch=master)
-![License](https://img.shields.io/github/license/todorowww/banking-srb.svg)
-![Packagist Version](https://img.shields.io/packagist/v/todorowww/banking-srb.svg)
-![GitHub Release](https://img.shields.io/github/release/todorowww/banking-srb.svg)
+![License](https://img.shields.io/github/license/todorowww/banking-srb.svg?style=flat-square)
+![Packagist Version](https://img.shields.io/packagist/v/todorowww/banking-srb.svg?style=flat-square)
+![GitHub release](https://img.shields.io/github/release/todorowww/banking-srb.svg?style=flat-square)
 =================================
 
 This library contains useful banking functions in use by banks in Serbia.
